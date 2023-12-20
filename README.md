@@ -4,6 +4,8 @@ Generator of crypto wallets for:<br/>
 <b><i>Dogecoin (DOGE)</i></b><br/>
 <b><i>Litecoin (LTC)</i></b><br/>
 <br/>
+Use SFML for it. In code you can to change <MyLib/...> includes.<br/>
+<br/>
 DONATE:<br/>
 
 	XMR:
@@ -21,6 +23,9 @@ DONATE:<br/>
         https://github.com/luigi1111/xmr.llcoins.net<br/>
         https://github.com/iancoleman/bip39<br/>
         https://github.com/OutCast3k/coinbin/<br/>
+</br>
+Замените в коде <i>#include &lang;MyLib/...&rang;</i> (с угловыми скоками) на <i>#include "MyLib/..."</i> (с кавычками), если не компилируется.</br>
+Данный код собирался в Microsoft Visual Studio 2017. Вам неоходимо использовать SFML, эту библиотеку можно бесплатно скачать на https://www.sfml-dev.org/. После установки библиотеки используйте соответствующие dll для запуска exe (dll нужно поместить в папку с exe, либо в папку C:/WINDOWS/SysWOW64/ для Windows 7). Из-за медленной работы BigInteger в режиме Debug крайне рекомендуется собирать Release. Также замечу, что все мои вспомогательные библиотеки писались только под x64. Не забудьте настроить проект Visual Studio на использование SFML C++ за 3 минуты: https://www.youtube.com/watch?v=WD0czEmX3xE.
 </br>
 <h2>Содание кошелька:</h2><br/>
 01. Запустить exe.<br/>
