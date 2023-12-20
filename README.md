@@ -2,32 +2,43 @@ Generator of crypto wallets for:<br/>
 <b><i>Bitcoin (BTC)</i></b><br/>
 <b><i>Monero (XMR)</i></b><br/>
 <b><i>Dogecoin (DOGE)</i></b><br/>
-<b><i>Litecoin (LTC)</i></b>
+<b><i>Litecoin (LTC)</i></b><br/>
+<br/>
+DONATE:<br/>
 
-<h1>Instruction (RUS):</h1></br>
+	XMR:
+		87MnyP3mpxQBmCoQHM4H64RuaBZtP5zW2hGWu18YPujA94a18ypzpYT6jnNq68Q24yXwXAFDG2Vi91AgLNC76uEcR5WMoRp
+	BTC:
+		bc1qrg8agge2gcy75kct9g3cxeyl26ecjsx5wf4r8a
+	DOGE:
+		D9UD5v6xDAQZkBpJz1eP3Q1byGBC9dx5rd
+	Litecoin:
+		Latr7n7ATGEC9AGXbJW2D9SWQdQUu3am1C
+<br/>
+<h1>Instruction (RUS):</h1><br/>
 </br>
-  Используемые репозитории:</br>
-        https://github.com/luigi1111/xmr.llcoins.net</br>
-        https://github.com/iancoleman/bip39</br>
-        https://github.com/OutCast3k/coinbin/</br>
+  Используемые репозитории:<br/>
+        https://github.com/luigi1111/xmr.llcoins.net<br/>
+        https://github.com/iancoleman/bip39<br/>
+        https://github.com/OutCast3k/coinbin/<br/>
 </br>
-<h2>Содание кошелька:</h2></br>
-01. Запустить exe.</br>
-02. Выбрать монету.</br>
-03. Ввести случайную строку и выбрать файл со случайными данными.</br>
-04. Водить мышкой и сгенерироввать файлы.</br>
-05. Сохранить файлы в KeePass, не открывать их ни в каких редакторах, кроме внутреннего встроенного просмотрщика KeePass.</br>
-06. Затереть файлы.</br>
-07. Создать кошельки ОФФЛАЙН:</br>
+<h2>Содание кошелька:</h2><br/>
+01. Запустить exe.<br/>
+02. Выбрать монету.<br/>
+03. Ввести случайную строку и выбрать файл со случайными данными.<br/>
+04. Водить мышкой и сгенерироввать файлы.<br/>
+05. Сохранить файлы в KeePass, не открывать их ни в каких редакторах, кроме внутреннего встроенного просмотрщика KeePass.<br/>
+06. Затереть файлы.<br/>
+07. Создать кошельки ОФФЛАЙН:<br/>
 
-  Для Bitcoin:</br>
+  Для Bitcoin:<br/>
     
-        01. Вставить seed в bip39.</br>
-        02. Подождать Calculating.</br>
-        03. Перейти в BIP84, все галочки оставить пустыми.</br>
-        04. Сохранить WIF и адрес в KeePass.</br>
+        01. Вставить seed в bip39.
+        02. Подождать Calculating.
+        03. Перейти в BIP84, все галочки оставить пустыми.
+        04. Сохранить WIF и адрес в KeePass.
         
-  Для Monero:</br>
+  Для Monero:<br/>
   
         01. Открыть xmr.llcoins.net.
         02. Вставить hex в addresstests.html (поле 2).
@@ -36,7 +47,7 @@ Generator of crypto wallets for:<br/>
         05. Вставить SEED и нажать Generate.
         06. Сохранить SEED, Private View Key и адрес в KeePass.
         
-  Для Dogecoin:</br>
+  Для Dogecoin:<br/>
   
         01. Открыть coinbin.
         02. Перейти в Help->Settings.
@@ -49,7 +60,7 @@ Generator of crypto wallets for:<br/>
         08. Нажать Generate.</br>
         09. Сохранить адрес и WIF в KeePass.</br>
         
-  Для Litecoin:</br>
+  Для Litecoin:<br/>
   
         01. Открыть coinbin.
         02. Перейти в Help->Settings.
@@ -61,15 +72,15 @@ Generator of crypto wallets for:<br/>
         07. Вставить в поле строку кошелька из out_ltc.txt.
         08. Нажать Generate.
         09. Сохранить адрес и WIF в KeePass.
-</br>
-</br>
-<h2>Отправка средств:</h2></br>
-  Для Monero:</br>
+<br/>
+<br/>
+<h2>Отправка средств:</h2><br/>
+  Для Monero:<br/>
     
         Через официальное приложение, можно через оффлайн подпись транзакции или
         лицензионным компьютером только с одним приложением Monero.
       
-  Для Bitcoin/Dogecoin/Litecoin:</br>
+  Для Bitcoin/Dogecoin/Litecoin:<br/>
     
         ОНЛАЙН:
             01. Открыть coinbin.
