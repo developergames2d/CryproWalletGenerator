@@ -17,4 +17,4 @@
 #include <vector>
 #include <MyLib\MyString.hpp>
 
-std::vector<unsigned __int8> GenerateRandomBytes(size_t count_wallets, MyString output = "");
+std::vector<unsigned __int8> GenerateFirstBytes(size_t count_wallets);

@@ -9,6 +9,8 @@
 //!     		D9UD5v6xDAQZkBpJz1eP3Q1byGBC9dx5rd
 //!     	Litecoin:
 //!     		Latr7n7ATGEC9AGXbJW2D9SWQdQUu3am1C
+//!         Solana:
+//!             ET1Zbdun77T64e5EPBkyj13DZyLMmkjiB7nkVHak2q87
 
 #include <iostream>
 #include <chrono>
@@ -18,20 +20,22 @@
 #include "Random.hpp"
 #include "CRC32.hpp"
 #include <MyLib\MyException.hpp>
+#include "Other.hpp"
 
 using namespace std;
 
-enum class Coin { Bitcoin, Monero, Dogecoin, Litecoin, Incorrect };
+enum class Coin { Bitcoin, Monero, Dogecoin, Litecoin, Solana, Incorrect };
 
 int main()
 {
+	bool GENERATE_FIRST = false;
 	try
 	{
 		Coin coin = Coin::Incorrect;
 
 		while (coin == Coin::Incorrect)
 		{
-			cout << "For what coin generate wallets? (Bitcoin, Monero, Dogecoin, Litecoin)" << endl;
+			cout << "For what coin generate wallets? (Bitcoin, Monero, Dogecoin, Litecoin, Solana)" << endl;
 
 			MyString s_coin;
 			cin >> s_coin;
@@ -46,6 +50,8 @@ int main()
 				coin = Coin::Dogecoin;
 			if (s_coin == "LITECOIN" || s_coin == "LTC")
 				coin = Coin::Litecoin;
+			if (s_coin == "SOLANA" || s_coin == "SOL")
+				coin = Coin::Solana;
 
 			if (static_cast<int>(coin) >= static_cast<int>(Coin::Incorrect) || static_cast<int>(coin) < 0)
 				cout << "Error input" << endl;
@@ -58,8 +64,15 @@ int main()
 
 		if (!wallets_count)
 			return 0;
+		
+		vector<unsigned __int8> all_bytes;
+		if (GENERATE_FIRST)
+			all_bytes = GenerateFirstBytes(wallets_count);
+		else
+			all_bytes = GenerateRandomBytes(wallets_count);
+		
+		
 
-		vector<unsigned __int8> all_bytes = GenerateRandomBytes(wallets_count);
 
 		FILE * out_bin = nullptr;
 		FILE * out_hex = nullptr;
@@ -67,7 +80,7 @@ int main()
 		FILE * out_dog = nullptr;
 		FILE * out_ltc = nullptr;
 
-		if (coin == Coin::Bitcoin)
+		if (coin == Coin::Bitcoin || coin == Coin::Solana)
 		{
 			fopen_s(&out_bin, "out_bin.txt", "w");
 			fopen_s(&out_mnm, "out_mnm.txt", "w");
@@ -105,7 +118,7 @@ int main()
 			for (size_t i = 0; i < SIZE_WALLET; ++i)
 				bytes.push_back(all_bytes[k * SIZE_WALLET + i]);
 
-			if (coin == Coin::Bitcoin)
+			if (coin == Coin::Bitcoin || coin == Coin::Solana)
 			{
 				crypto::bitcoin::AddSHA(bytes);
 
@@ -148,7 +161,7 @@ int main()
 
 
 		MyString sss = MyString("!!!ERROR ON LINE ") + MyString::GetStringFromNumber(__LINE__) + MyString("!!!");
-		if (coin == Coin::Bitcoin)
+		if (coin == Coin::Bitcoin || coin == Coin::Solana)
 			sss = "out_bin.txt, out_hex.txt and out_mnm.txt";
 		if (coin == Coin::Monero)
 			sss = "out_hex.txt";

@@ -9,6 +9,8 @@
 //!     		D9UD5v6xDAQZkBpJz1eP3Q1byGBC9dx5rd
 //!     	Litecoin:
 //!     		Latr7n7ATGEC9AGXbJW2D9SWQdQUu3am1C
+//!         Solana:
+//!             ET1Zbdun77T64e5EPBkyj13DZyLMmkjiB7nkVHak2q87
 
 #include <iostream>
 #include <chrono>
