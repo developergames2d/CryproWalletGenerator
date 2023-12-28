@@ -3,6 +3,7 @@ Generator of crypto wallets for:<br/>
 <b><i>Monero (XMR)</i></b><br/>
 <b><i>Dogecoin (DOGE)</i></b><br/>
 <b><i>Litecoin (LTC)</i></b><br/>
+<b><i>Solana (SOL)</i></b><br/>
 <br/>
 Use SFML for it. In code you can to change <MyLib/...> includes.<br/>
 <br/>
@@ -16,6 +17,8 @@ DONATE:<br/>
 		D9UD5v6xDAQZkBpJz1eP3Q1byGBC9dx5rd
 	Litecoin:
 		Latr7n7ATGEC9AGXbJW2D9SWQdQUu3am1C
+  	Solana:
+   		ET1Zbdun77T64e5EPBkyj13DZyLMmkjiB7nkVHak2q87
 <br/>
 <h1>Instruction (RUS):</h1><br/>
 </br>
@@ -78,6 +81,12 @@ DONATE:<br/>
         07. Вставить в поле строку кошелька из out_ltc.txt.
         08. Нажать Generate.
         09. Сохранить адрес и WIF в KeePass.
+
+ Для Solana:<br/>
+
+  	01. Откройте приложение Solflare и восстановите кошелёк вашей SEED-фразой.
+   	02. Скопируйте адрес и (при желании) закрытый ключ кошелька.
+    	03. Сохраните всё в KeePass.
 <br/>
 <br/>
 <h2>Отправка средств:</h2><br/>
@@ -85,7 +94,12 @@ DONATE:<br/>
     
         Через официальное приложение, можно через оффлайн подпись транзакции или
         лицензионным компьютером только с одним приложением Monero.
-      
+
+  Для Solana:
+  	
+   	Как и при создании кошелька, войдите в Solflare и отправляйте монеты куда угодно.
+	Там же можно стейкать любому валидатору.
+ 
   Для Bitcoin/Dogecoin/Litecoin:<br/>
     
         ОНЛАЙН:
