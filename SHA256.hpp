@@ -25,7 +25,7 @@ public:
 	SHA256();
 	void update(const uint8_t * data, size_t length);
 	void update(const std::string &data);
-	std::array<uint8_t, 32> digest();
+	std::array<uint8_t, 32> digest() const;
 
 	static std::string toString(const std::array<uint8_t, 32> & digest);
 
@@ -61,5 +61,6 @@ private:
 	static uint32_t sig1(uint32_t x);
 	void transform();
 	void pad();
-	void revert(std::array<uint8_t, 32> & hash);
+	void revert(std::array<uint8_t, 32> & hash) const;
+	std::array<uint8_t, 32> digest_old();
 };
