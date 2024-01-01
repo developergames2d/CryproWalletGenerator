@@ -132,7 +132,7 @@ vector<unsigned __int8> GenerateRandomBytes(size_t count_wallets, MyString outpu
 
 		if (reseted_bytes && reseted_time)
 		{
-			const __int64 n = sha.digest()[0] * 0x1000 + sha.digest()[1] * 0x10 + +sha.digest()[2] * 0x10 + +sha.digest()[3];
+			const __int64 n = sha.digest()[0] * 0x1000 + sha.digest()[1] * 0x100 + +sha.digest()[2] * 0x10 + +sha.digest()[3];
 			if (n % RAND_N != 0)
 			{
 				UPDATE_SHA(0);
@@ -154,7 +154,7 @@ vector<unsigned __int8> GenerateRandomBytes(size_t count_wallets, MyString outpu
 		}
 
 		if (!reseted_bytes || !reseted_time)
-			printf("Create entropy. %6.2lf%% %6.2lf%%\n", (reseted_bytes ? 1 : (double)result.size() / BYTES_RESET) * 100, (reseted_time ? 1 : (double)clk.getElapsedTime().asMicroseconds() / TIME_RESET) * 100);
+			printf("Create entropy. %6.2lf%% %6.2lf%%\n", (reseted_bytes ? 1 : (double)result.size() / BYTES_RESET) * 100, (reseted_time ? 1 : (double)min(clk.getElapsedTime().asMicroseconds(), TIME_RESET) / TIME_RESET) * 100);
 		else
 			printf_s("Generate wallets. %20llu/%llu (%6.2lf%%)\n", result.size() / SIZE_WALLET, MAX_SIZE / SIZE_WALLET, (double)result.size() / MAX_SIZE * 100);
 	}
