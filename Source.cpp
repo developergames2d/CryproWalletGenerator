@@ -28,6 +28,25 @@ enum class Coin { Bitcoin, Monero, Dogecoin, Litecoin, Solana, Incorrect };
 
 int main()
 {
+	if (0)
+	{
+		SHA256 sha;
+
+		cout << SHA256::toString(sha.digest()) << endl;
+		cout << SHA256::toString(sha.digest()) << endl;
+		cout << SHA256::toString(sha.digest()) << endl;
+		uint8_t t = '1';
+		sha.update(&t, 1);
+		cout << SHA256::toString(sha.digest()) << endl;
+		cout << SHA256::toString(sha.digest()) << endl;
+		cout << SHA256::toString(sha.digest()) << endl;
+
+		system("pause");
+		return 0;
+	}
+
+
+
 	bool GENERATE_FIRST = false;
 	try
 	{
@@ -77,17 +96,18 @@ int main()
 		FILE * out_bin = nullptr;
 		FILE * out_hex = nullptr;
 		FILE * out_mnm = nullptr;
+		FILE * out_wif = nullptr;
 		FILE * out_dog = nullptr;
 		FILE * out_ltc = nullptr;
 
-		if (coin == Coin::Bitcoin || coin == Coin::Solana)
+		if (coin == Coin::Bitcoin)
 		{
 			fopen_s(&out_bin, "out_bin.txt", "w");
 			fopen_s(&out_mnm, "out_mnm.txt", "w");
-			if (!out_bin || !out_mnm)
+			/*fopen_s(&out_wif, "out_wif.txt", "w");*/
+			if (!out_bin || !out_mnm/* || !out_wif*/)
 				throw MyException() << __FILE__ << ":" << __LINE__;
 		}
-
 		if (coin == Coin::Dogecoin)
 		{
 			fopen_s(&out_dog, "out_dog.txt", "w");
@@ -99,6 +119,14 @@ int main()
 		{
 			fopen_s(&out_ltc, "out_ltc.txt", "w");
 			if (!out_ltc)
+				throw MyException() << __FILE__ << ":" << __LINE__;
+		}
+
+		if (coin == Coin::Solana)
+		{
+			fopen_s(&out_bin, "out_bin.txt", "w");
+			fopen_s(&out_mnm, "out_mnm.txt", "w");
+			if (!out_bin || !out_mnm)
 				throw MyException() << __FILE__ << ":" << __LINE__;
 		}
 
@@ -120,6 +148,12 @@ int main()
 
 			if (coin == Coin::Bitcoin || coin == Coin::Solana)
 			{
+				/*if (coin == Coin::Bitcoin)
+				{
+					MyString wif = crypto::bitcoin::GetWIF(bytes);
+					fprintf_s(out_wif, "%s %s\n", MyString::GetStringFromNumber(k + 1, 10, ' ').operator const char *(), wif.operator const char *());
+				}*/
+
 				crypto::bitcoin::AddSHA(bytes);
 
 				MyString bin = crypto::GetBitsFromBytes(bytes);
@@ -133,9 +167,12 @@ int main()
 				for (size_t i = 0; i < mnemonic.size(); ++i)
 					fprintf_s(out_mnm, "%12s", mnemonic[i].operator const char *());
 				fprintf_s(out_mnm, "\n");
+
 			}
 			if (coin == Coin::Monero)
 			{
+				bytes.pop_back();
+				bytes.push_back(0);
 				MyString hex = crypto::GetHexFromBytes(bytes);
 				fprintf_s(out_hex, "%s        %s\n", MyString::GetStringFromNumber(k + 1, 10, ' ').operator const char *(), hex.operator const char *());
 			}
@@ -154,6 +191,8 @@ int main()
 			fclose(out_hex);
 		if (out_mnm)
 			fclose(out_mnm);
+		if (out_wif)
+			fclose(out_wif);
 		if (out_dog)
 			fclose(out_dog);
 		if (out_ltc)
@@ -161,7 +200,7 @@ int main()
 
 
 		MyString sss = MyString("!!!ERROR ON LINE ") + MyString::GetStringFromNumber(__LINE__) + MyString("!!!");
-		if (coin == Coin::Bitcoin || coin == Coin::Solana)
+		if (coin == Coin::Bitcoin)
 			sss = "out_bin.txt, out_hex.txt and out_mnm.txt";
 		if (coin == Coin::Monero)
 			sss = "out_hex.txt";
@@ -169,6 +208,8 @@ int main()
 			sss = "out_hex.txt and out_dog.txt";
 		if (coin == Coin::Litecoin)
 			sss = "out_hex.txt and out_ltc.txt";
+		if (coin == Coin::Solana)
+			sss = "out_bin.txt, out_hex.txt and out_mnm.txt";
 		cout << "Your wallets was created. See file(s) " << sss << ".\n" << "Save it in a safe place and ERASE these files beyond recovery (do not just delete or shift+delete!)." << endl << endl;
 
 	}
